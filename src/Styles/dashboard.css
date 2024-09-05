@@ -1,0 +1,22 @@
+.grid-clr{
+    background-color: aqua;
+}
+.grids{
+    background-color: aquamarine;
+}
+.react-grid-item.react-grid-placeholder {
+    background-color: rgb(248, 243, 243);
+    pointer-events: none;
+}
+
+/* .react-grid-item.react-grid-placeholder {
+    opacity: 0.2;
+    transition-duration: 100ms;
+    z-index: 2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  } */

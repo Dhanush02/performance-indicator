@@ -1,0 +1,43 @@
+/* PowerBICard.css */
+.metric-card-dashboard {
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+     /* Padding inside the card */
+    /* Margin around the card */
+    width: 100%;
+    text-align: center; /* Center-align text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+/* PowerBICard.css */
+.metric-card {
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding inside the card */
+    max-width: 200px; /* Max width of the card */
+    text-align: center; /* Center-align text */
+  }
+
+.multi-metric-card {
+    background-color: #ffffff; /* White background */
+    padding: 20px; /* Padding inside the card */
+    max-width: 200px; /* Max width of the card */
+    text-align: center; /* Center-align text */
+    border-right: 1px solid #D3D3D3;
+  }
+  
+  .metric-card-header {
+    font-size: 18px; 
+    color: darkblue;
+    font-weight: bold; 
+    /* margin-bottom: 8px;  */
+  }
+  
+  .metric-card-value {
+    font-size: 24px; 
+    color: #333; 
+  }
+  

@@ -1,0 +1,58 @@
+.chart-outer-list{
+    margin-left: auto;
+    max-height: 77vh;
+    height: 77vh;
+    display: block;
+}
+.chart-inner-list{
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+}
+.chart-inner-list::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.card-chart-form{
+    max-height: 90vh;
+    height: 90vh;
+}
+
+
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 40vh;
+    margin-left: auto;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, input, button {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* button:hover {
+    background-color: #0056b3;
+} */
+
+.react-grid-item.react-grid-placeholder {
+    background-color: rgb(248, 243, 243);
+    pointer-events: none;
+}
