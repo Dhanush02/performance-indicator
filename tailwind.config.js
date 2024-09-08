@@ -8,6 +8,9 @@ module.exports = {
     './src/**/*.{js,jsx}',
   ],
   prefix: "",
+  daisyui: {
+    themes: ["light", "dark", "cupcake"],
+  },
   theme: {
     container: {
       center: true,
@@ -73,5 +76,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('daisyui')
+  ],
 }

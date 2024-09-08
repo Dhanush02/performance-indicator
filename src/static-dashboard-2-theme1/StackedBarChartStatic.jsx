@@ -37,32 +37,34 @@ export function StackedBarChartStatic(props) {
       }
   return (
     <Card className="w-[16rem]">
-      <CardHeader>
-        <CardTitle>
+      <CardHeader className="pt-3">
+        <CardTitle className="text-xl">
           <div className="flex flex-row">
             
           Business Sustainablity
           {/* <Flower/> */}
           </div>
           </CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardDescription className="text-[0.8rem]">January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer className="" config={chartConfig}>
           <BarChart margin={{
                   left: 0,
                   right: 0,
                   top: 0,
-                  bottom: 10,
+                  bottom:0,
                 }} accessibilityLayer 
+                height={"15px"}
                 layout="vertical" data={chartData}>
             {/* <CartesianGrid vertical={false} /> */}
-            <XAxis type="number" dataKey="actual" />
+            <XAxis type="number" className="mt-2" dataKey="actual" />
             <YAxis
                   dataKey="indicator"
                   type="category"
                   tickLine={false}
                   tickMargin={4}
+                  minTickGap={4}
                   axisLine={false}
                 />
             {/* <XAxis
@@ -75,8 +77,8 @@ export function StackedBarChartStatic(props) {
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
             <ChartLegend content={<ChartLegendContent />} />
             
-            <Bar dataKey="actual" fill="var(--color-actual)" radius={4} />
-            <Bar dataKey="planned" fill="var(--color-planned)" radius={4} />
+            <Bar dataKey="actual" fill="var(--color-actual)" barSize={12} radius={4} />
+            <Bar dataKey="planned" fill="var(--color-planned)" barSize={12} radius={4} />
           </BarChart>
         </ChartContainer>
     

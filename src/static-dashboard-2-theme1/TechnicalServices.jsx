@@ -16,12 +16,19 @@ CircleUser,
 CodeIcon,
 CompassIcon,
 ComputerIcon,
+Download,
+FileChartColumn,
 Home,
+Lock,
 Menu,
+Moon,
 Package,
 Package2,
+Palette,
 Search,
+Settings,
 ShoppingCart,
+Sun,
 Users,
 } from "lucide-react"
 import { BadgeDollarSign, CalendarClock, CalendarDays, ShieldCheck, TrendingDown, TrendingUp } from "lucide-react";
@@ -59,15 +66,37 @@ import { useNavigate } from "react-router-dom"
 
 export const description =
 "A products dashboard with a sidebar navigation and a main content area. The dashboard has a header with a search input and a user menu. The sidebar has a logo, navigation links, and a card with a call to action. The main content area shows an empty state with a call to action."
-const TechnicalServices = () =>{
+const TechnicalServices = (props) =>{
+    const {theme, setTheme, currentTheme, setCurrentTheme, currentMode, setCurrentMode} = props;
     const navigate = useNavigate()
     return(
         <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[250px_1fr]">
+            <dialog id="customize_theme" data-theme={currentMode} className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <h3 className="font-bold text-lg" data-theme={currentMode}>Mode</h3>
+                    <ul className="flex flex-row">
+                        <li className="p-3" onClick={()=>{setCurrentMode("light")}}>
+                            <Sun className={currentMode=="light"?"size-8 fill-orange-500 stroke-orange-500 hover:fill-orange-500 hover:stroke-orange-500":"size-8 fill-slate-400 stroke-slate-400 hover:fill-orange-500 hover:stroke-orange-500"} />
+                        </li>
+                        <li className="p-3" onClick={()=>{setCurrentMode("dark")}}>
+                            <Moon className={currentMode=="dark"?"size-8 fill-cyan-600 stroke-cyan-600 hover:fill-cyan-600 hover:stroke-cyan-600":"size-8 fill-slate-50 stroke-slate-400 hover:fill-cyan-600 hover:stroke-cyan-600"}/>
+                        </li>
+                    </ul>
+                    
+                    <div className="modal-action">
+                    
+                    </div>
+                </div>
+            </dialog>
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <a href="/" className="flex items-center gap-2 font-semibold">
-              <DashboardIcon className="h-6 w-6" />
+              <FileChartColumn className="h-6 w-6" />
               <span className="">Performance Insight</span>
             </a>
           </div>
@@ -202,17 +231,15 @@ const TechnicalServices = () =>{
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
-                <CircleUser className="h-5 w-5" />
+                <Settings className="h-5 w-5" />
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Settings</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Customize Theme</DropdownMenuItem>
-              <DropdownMenuItem> Submit Feedback</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Documentation</DropdownMenuItem>
+              <DropdownMenuItem onClick={()=>{document.getElementById('customize_theme').showModal()}}><Palette className="mr-2"/>Customize Theme</DropdownMenuItem>
+              <DropdownMenuItem><Lock className="mr-2"/> Lock Layout</DropdownMenuItem>
+              <DropdownMenuItem><Download className="mr-2"/>Export</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

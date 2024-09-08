@@ -53,12 +53,12 @@ export function NegativeBarChartStatic(props) {
     const {theme, setTheme, currentTheme, setCurrentTheme} = props;
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Direct Controllable Cost</CardTitle>
-        <CardDescription>(In $MM)</CardDescription>
+      <CardHeader className="pt-3 pb-[1.125rem]">
+        <CardTitle className="text-xl pb-2">Direct Controllable Cost ($MM)</CardTitle>
+        {/* <CardDescription className="text-[0.8rem] pt-0 pb-0">(In $MM)</CardDescription> */}
       </CardHeader>
       <CardContent className="" >
-        <ChartContainer  config={chartConfig}>
+        <ChartContainer className="" config={chartConfig}>
             
           <BarChart accessibilityLayer data={data}>
             <CartesianGrid vertical={false} />
@@ -84,9 +84,9 @@ export function NegativeBarChartStatic(props) {
               </Bar>
             <Bar dataKey="uv" stackId="a" fill="#82ca9d">
               {data.map((item, index) => {
-                  if (item.uv < 0) return <Cell key={index} fill="#C62F10" />;
-                  if (item.name === "Total") return <Cell key={index} fill="hsl(197 37% 24%)" />;
-                  return <Cell key={index} fill="#84BD00" />;
+                  if (item.uv < 0) return <Cell key={index} fill={theme.phising_test[currentTheme][0]} />;
+                  if (item.name === "Total") return <Cell key={index} fill={theme.phising_test[currentTheme][2]} />;
+                  return <Cell key={index} fill={theme.phising_test[currentTheme][1]} />;
               })}
               <LabelList
                     dataKey="uv"
@@ -113,7 +113,7 @@ export function NegativeBarChartStatic(props) {
         </ChartContainer>
       </CardContent>
       <CardFooter>
-      <div className="flex items-center gap-2 font-medium leading-none">
+      <div className="flex items-center mt-0 text-base font-medium leading-none">
           Total Direct Controllable Cost is $320K <TrendingUp className="h-4 w-4" />
         </div>
       </CardFooter>

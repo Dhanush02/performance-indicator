@@ -39,14 +39,14 @@ export default function MultipleBarStatic(props) {
         },
       }
   return (
-    <Card className="h-[17rem]">
-      <CardHeader>
-        <CardTitle>Inventory Quality</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+      <Card className="h-[15rem] w-[16rem]">
+      <CardHeader className="pt-3">
+        <CardTitle className="text-xl">Inventory Quality</CardTitle>
+        <CardDescription className="text-[0.8rem]">January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
-          <BarChart layout="horizontal"  accessibilityLayer data={chartData} 
+        <ChartContainer className="h-[8rem]" config={chartConfig}>
+          <BarChart layout="horizontal" barSize={30} barGap={4} accessibilityLayer data={chartData} 
                >
             <CartesianGrid vertical={false} />
             <XAxis

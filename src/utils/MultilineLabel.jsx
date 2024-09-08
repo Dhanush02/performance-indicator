@@ -2,7 +2,6 @@ import React from 'react';
 import { LabelList } from 'recharts';
 
 const MultilineLabel = ({ x, y, value, ...props }) => {
-  console.log("props", x);
   // Split the value into multiple lines based on some delimiter
   const lines = value.split('\n');
 

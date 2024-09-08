@@ -44,6 +44,7 @@ import { DarkModeSwitch } from "react-toggle-dark-mode"
 import PieChartStatic from "./PieChartStatic"
 import MultiTableStatic from "./MultiTableStatic"
 import { ArrowUp, Icon, TrendingUp } from "lucide-react"
+import { color } from "@amcharts/amcharts5"
 
 export default function StaticDashboard(props) {
   
@@ -63,7 +64,7 @@ export default function StaticDashboard(props) {
       );
     };
   return (
-    <Card style={{backgroundColor : currentMode=="dark"?"" : "rgb(246 248 248)" , borderRadius : "0px"}}>
+    <Card className="pt-20" style={{backgroundColor : currentMode=="dark"?"" : "rgb(246 248 248)" , borderRadius : "0px"}}>
         <CardContent>
             {/* <div style={{marginTop: "29px"}}>
                 <DarkModeSwitch
@@ -75,29 +76,36 @@ export default function StaticDashboard(props) {
                 size={30}
                 />
             </div> */}
-
+            <div className="breadcrumbs text-sm text-center">
+              <ul>
+                <li><a>Home</a></li>
+                <li><a href="/">Technical Services</a></li>
+                <li>QTR_TS</li>
+              </ul>
+            </div>
             {/* First Row */}
-            <div className="flex gap-4 flex-row mt-5 justify-center"> 
+            <div className="flex gap-3 flex-row mt-5 justify-center"> 
+              <div className="flex flex-col">
             <Card
-          className="flex flex-col w-[22rem]" x-chunk="charts-01-chunk-1"
+          className="flex flex-col w-[21rem]" x-chunk="charts-01-chunk-1"
         >
-          <CardHeader style={{marginBottom : "0px" , paddingBottom : "0px"}}>
-             <CardTitle>Controllable Cost ($MM)</CardTitle>
+          <CardHeader className="pt-3 pb-2">
+             <CardTitle className="text-xl">Controllable Cost ($MM)</CardTitle>
           </CardHeader>
-          <CardHeader className="flex flex-row border-b p-4">
+          <CardHeader className="flex flex-row border-b pt-0 pb-2 ">
             <div className="flex w-full items-center gap-2">
-              <div className="grid flex-1 auto-rows-min gap-1 pl-5">
+              <div className="grid flex-1 auto-rows-min gap-1 pl-3">
                 <div className="text-xs text-muted-foreground">Actual</div>
-                <div className="flex items-baseline gap-1 text-3xl font-bold tabular-nums leading-none">
+                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
                 504
                   <span className="text-sm font-normal text-muted-foreground">
                     
                   </span>
                 </div>
               </div>
-              <div className="grid flex-1 auto-rows-min pl-20 gap-0.5">
+              <div className="grid flex-1 auto-rows-min pl-28 gap-0.5">
                 <div className="text-xs text-muted-foreground">Plan</div>
-                <div className="flex items-baseline gap-1 text-3xl font-bold tabular-nums leading-none">
+                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
                   500
                   <span className="text-sm font-normal text-muted-foreground">
                     
@@ -108,7 +116,7 @@ export default function StaticDashboard(props) {
             </div>
           </CardHeader>
           
-          <CardContent className="items-center">
+          <CardContent className="items-center pt-2">
             <ChartContainer
               config={{
                 Plan: {
@@ -175,7 +183,7 @@ export default function StaticDashboard(props) {
                   strokeOpacity={0.5}
                 />
                 <YAxis hide domain={["dataMin - 10", "dataMax + 10"]} />
-                <ChartLegend content={<ChartLegendContent />} />
+                <ChartLegend height={"0.5rem"} content={<ChartLegendContent />} />
                 <XAxis
                   dataKey="date"
                   tickLine={false}
@@ -190,13 +198,13 @@ export default function StaticDashboard(props) {
                 <Line
                   dataKey="Actual"
                   type="natural"
-                  fill={theme.inventory_quality.theme1[1]}
-                  stroke={theme.inventory_quality.theme1[1]}
+                  fill={theme.inventory_quality[currentTheme][1]}
+                  stroke={theme.inventory_quality[currentTheme][1]}
                   strokeWidth={2}
                   dot={false}
                   activeDot={{
-                    fill: theme.inventory_quality.theme1[1],
-                    stroke: theme.inventory_quality.theme1[1],
+                    fill: theme.inventory_quality[currentTheme][1],
+                    stroke: theme.inventory_quality[currentTheme][1],
                     r: 4,
                   }}
                 />
@@ -204,13 +212,13 @@ export default function StaticDashboard(props) {
                 <Line
                   dataKey="Plan"
                   type="natural"
-                  fill={theme.inventory_quality.theme1[0]}
-                  stroke={theme.inventory_quality.theme1[0]}
+                  fill={theme.inventory_quality[currentTheme][0]}
+                  stroke={theme.inventory_quality[currentTheme][0]}
                   strokeWidth={2}
                   dot={false}
                   activeDot={{
-                    fill: theme.inventory_quality.theme1[0],
-                    stroke: theme.inventory_quality.theme1[0],
+                    fill: theme.inventory_quality[currentTheme][0],
+                    stroke: theme.inventory_quality[currentTheme][0],
                     r: 4,
                   }}
                 />
@@ -309,11 +317,11 @@ export default function StaticDashboard(props) {
               </LineChart> */}
             </ChartContainer>
           </CardContent>
-          <CardFooter className="flex flex-row border-t p-4">
+          <CardFooter className="flex flex-row border-t h-[3.5rem] p-6">
             <div className="flex w-full items-center gap-2">
               <div className="grid flex-1 auto-rows-min gap-0.5">
                 <div className="text-xs text-muted-foreground">This Month</div>
-                <div className="flex items-baseline gap-1 text-2xl font-semibold tabular-nums leading-none">
+                <div className="flex items-baseline gap-1 text-xl font-semibold tabular-nums leading-none">
                 150
                   <span className="text-sm font-normal text-muted-foreground">
                     
@@ -323,7 +331,7 @@ export default function StaticDashboard(props) {
               <Separator orientation="vertical" className="mx-2 h-10 w-px" />
               <div className="grid flex-1 auto-rows-min gap-0.5">
                 <div className="text-xs text-muted-foreground">This Qtr</div>
-                <div className="flex items-baseline gap-1 text-2xl font-semibold tabular-nums leading-none">
+                <div className="flex items-baseline gap-1 text-xl font-semibold tabular-nums leading-none">
                   504
                   <span className="text-sm font-normal text-muted-foreground">
                     
@@ -333,12 +341,12 @@ export default function StaticDashboard(props) {
               <Separator orientation="vertical" className="mx-2 h-10 w-px" />
               <div className="grid flex-1 auto-rows-min gap-0.5">
                 <div className="text-xs text-muted-foreground">Var.</div>
-                <div className="flex items-baseline gap-1 text-2xl text-[#C62F10] font-semibold tabular-nums leading-none">
+                <div style={{color: theme.phising_test[currentTheme][0]}} className="flex items-baseline gap-1 text-xl font-semibold tabular-nums leading-none">
                   -5.6
-                  <span className="text-sm font-normal text-[#C62F10] text-muted-foreground">
+                  <span style={{color: theme.phising_test[currentTheme][0]}} className="text-sm font-normal text-muted-foreground">
                     %
                   </span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C62F10" className="size-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={theme.phising_test[currentTheme][0]} className="size-5">
                         <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z" clipRule="evenodd" />
                     </svg>
                 </div>
@@ -346,7 +354,8 @@ export default function StaticDashboard(props) {
             </div>
           </CardFooter>
         </Card>
-        <div className="w-[32rem]">
+        </div>
+        <div className="w-[27.2rem]">
         <NegativeBarChartStatic
         theme={theme}
         setTheme={setTheme}
@@ -357,152 +366,161 @@ export default function StaticDashboard(props) {
             </div>
 
         {/* Second Row */}
-        <div className="flex flex-row mt-4 gap-4 justify-center">
-        <Card className="w-[17.6rem]">
-            <CardHeader>
-                <CardTitle className="text-center">
-                    Expenditure Forecast
-                </CardTitle>
-            </CardHeader>
-            <CardContent>
-                <CardTitle className="text-center text-6xl p-2 text-[#84BD00]">70%</CardTitle>
-            </CardContent>
-            <CardFooter className="flex flex-row border-t p-4">
-            <div className="flex w-full items-center gap-2">
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Last Year</div>
-                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                63
-                  <span className="text-sm font-normal text-muted-foreground">
-                    %
-                  </span>
+        <div className="flex flex-row mt-3 gap-3 justify-center">
+          <div className="flex flex-col">
+          <Card className="w-[15.8rem]">
+              <CardHeader className="pt-3">
+                  <CardTitle className="text-left text-xl">
+                      Expenditure Forecast
+                  </CardTitle>
+              </CardHeader>
+              <CardContent>
+                  <CardTitle style={{color: theme.phising_test[currentTheme][1]}} className="text-center text-5xl p-1">70%</CardTitle>
+              </CardContent>
+              <CardFooter className="flex flex-row border-t p-4 h-[3.5rem]">
+              <div className="flex w-full items-center gap-2">
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-[0.7rem] text-muted-foreground">Last Year</div>
+                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                  63
+                    <span className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                  </div>
+                </div>
+                <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-xs text-muted-foreground">Plan</div>
+                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                    72
+                    <span className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                  </div>
+                </div>
+                <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-xs text-muted-foreground">Var.</div>
+                  <div style={{color: theme.phising_test[currentTheme][1]}} className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                    13
+                    <span style={{color: theme.phising_test[currentTheme][1]}} className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={theme.phising_test[currentTheme][1]} className="size-5">
+                            <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
+                          </svg>
+                  </div>
                 </div>
               </div>
-              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Planned</div>
-                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                  72
-                  <span className="text-sm font-normal text-muted-foreground">
-                    %
-                  </span>
+            </CardFooter>
+              
+          </Card>
+          </div>
+          <div className="flex flex-col">
+          <Card className="w-[16.5rem]">
+              <CardHeader className="pt-3">
+                  <CardTitle className="text-left text-[1.20rem]">
+                      Project Schedule Controls
+                  </CardTitle>
+              </CardHeader>
+              <CardContent>
+                  <CardTitle style={{color: theme.phising_test[currentTheme][0]}} className="text-center text-5xl p-1]">85%</CardTitle>
+              </CardContent>
+              <CardFooter className="flex flex-row border-t p-4 h-[3.5rem]">
+              <div className="flex w-full items-center gap-2">
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-[0.7rem] text-muted-foreground">Last Year</div>
+                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                  63
+                    <span className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                  </div>
+                </div>
+                <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-[0.7rem] text-muted-foreground">Plan</div>
+                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                    72
+                    <span className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                  </div>
+                </div>
+                <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-[0.7rem] text-muted-foreground">Var.</div>
+                  <div style={{color: theme.phising_test[currentTheme][0]}} className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                    -5.6
+                    <span style={{color: theme.phising_test[currentTheme][0]}} className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={theme.phising_test[currentTheme][0]} className="size-5">
+                          <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z" clipRule="evenodd" />
+                      </svg>
+                  </div>
                 </div>
               </div>
-              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Var.</div>
-                <div className="flex items-baseline gap-1 text-[#84BD00] text-2xl font-bold tabular-nums leading-none">
-                  13
-                  <span className="text-sm font-normal text-[#84BD00] text-muted-foreground">
-                    %
-                  </span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#84BD00" className="size-6">
-                          <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
-                        </svg>
+            </CardFooter>
+              
+          </Card>
+          </div>
+          <div className="flex flex-col">
+          <Card className="w-[15.8rem]">
+              <CardHeader className="pt-3">
+                  <CardTitle className="text-left text-xl">
+                      Alignment to Industry
+                  </CardTitle>
+              </CardHeader>
+              <CardContent>
+                  <CardTitle style={{color: theme.phising_test[currentTheme][1]}} className="text-center text-5xl p-1">70%</CardTitle>
+              </CardContent>
+              <CardFooter className="flex flex-row border-t p-4 h-[3.5rem]">
+                <div className="flex flex-col w-full">
+              <div className="flex w-full items-center">
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-[0.7rem] text-muted-foreground">Last Year</div>
+                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                  63
+                    <span className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                  </div>
+                </div>
+                <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-[0.7rem] text-muted-foreground">Plan</div>
+                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                    72
+                    <span className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                  </div>
+                </div>
+                <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+                <div className="grid flex-1 auto-rows-min gap-0.5">
+                  <div className="text-[0.7rem] text-muted-foreground">Var.</div>
+                  <div style={{color: theme.phising_test[currentTheme][1]}} className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                    13
+                    <span style={{color: theme.phising_test[currentTheme][1]}} className="text-[0.7rem] font-normal text-muted-foreground">
+                      %
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={theme.phising_test[currentTheme][1]} className="size-5">
+                            <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
+                          </svg>
+                  </div>
                 </div>
               </div>
-            </div>
-          </CardFooter>
-            
-        </Card>
-        <Card className="w-[17.6rem]">
-            <CardHeader>
-                <CardTitle className="text-center text-xl text-bold">
-                    Project Schedule Controls
-                </CardTitle>
-            </CardHeader>
-            <CardContent>
-                <CardTitle className="text-center text-6xl p-2 text-[#C62F10]">85%</CardTitle>
-            </CardContent>
-            <CardFooter className="flex flex-row border-t p-4">
-            <div className="flex w-full items-center gap-2">
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Last Year</div>
-                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                63
-                  <span className="text-sm font-normal text-muted-foreground">
-                    %
-                  </span>
-                </div>
               </div>
-              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Planned</div>
-                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                  72
-                  <span className="text-sm font-normal text-muted-foreground">
-                    %
-                  </span>
-                </div>
-              </div>
-              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Var.</div>
-                <div className="flex items-baseline gap-1 text-2xl text-[#C62F10] font-bold tabular-nums leading-none">
-                  -5.6
-                  <span className="text-sm font-normal text-[#C62F10] text-muted-foreground">
-                    %
-                  </span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C62F10" className="size-6">
-                        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z" clipRule="evenodd" />
-                    </svg>
-                </div>
-              </div>
-            </div>
-          </CardFooter>
-            
-        </Card>
-        <Card className="w-[17.6rem]">
-            <CardHeader>
-                <CardTitle className="text-center">
-                    Alignment to Industry
-                </CardTitle>
-            </CardHeader>
-            <CardContent>
-                <CardTitle className="text-center text-6xl p-2 text-[#84BD00]">70%</CardTitle>
-            </CardContent>
-            <CardFooter className="flex flex-row border-t p-4">
-            <div className="flex w-full items-center gap-2">
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Last Year</div>
-                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                63
-                  <span className="text-sm font-normal text-muted-foreground">
-                    %
-                  </span>
-                </div>
-              </div>
-              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Planned</div>
-                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                  72
-                  <span className="text-sm font-normal text-muted-foreground">
-                    %
-                  </span>
-                </div>
-              </div>
-              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
-              <div className="grid flex-1 auto-rows-min gap-0.5">
-                <div className="text-xs text-muted-foreground">Var.</div>
-                <div className="flex items-baseline gap-1 text-2xl text-[#84BD00] font-bold tabular-nums leading-none">
-                  13
-                  <span className="text-sm font-normal text-[#84BD00] text-muted-foreground">
-                    %
-                  </span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#84BD00" className="size-6">
-                          <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
-                        </svg>
-                </div>
-              </div>
-            </div>
-          </CardFooter>
-        </Card>
+            </CardFooter>
+          </Card>
+          </div>
+          
         </div>
 
         {/* Third Row */}
-        <div className="flex flex-row gap-4 mt-4 justify-center">
-          <div className="flex flex-col gap-4">
+        <div className="flex flex-row gap-3 mt-3 justify-center">
+          <div className="flex flex-col gap-3">
             <RadialText 
             theme={theme}
             setTheme={setTheme}
@@ -516,35 +534,37 @@ export default function StaticDashboard(props) {
         setCurrentTheme={setCurrentTheme}
         />
           </div>
-          <MultiTableStatic/>
+          <MultiTableStatic
+          theme={theme}
+          setTheme={setTheme}
+          currentTheme={currentTheme}
+          setCurrentTheme={setCurrentTheme}
+          />
         </div>
 
         {/* Fourth Row  */}
-        <div className="flex flex-row gap-4 mt-4 justify-center">
-          <div className="flex flex-col gap-4">
+        <div className="flex flex-row gap-3 mt-3 justify-center">
             
-        <MultiCardStatic/>
-        <PieChartStatic
-         theme={theme}
-         setTheme={setTheme}
-         currentTheme={currentTheme}
-         setCurrentTheme={setCurrentTheme}
-         />
+        <MultiCardStatic
+        theme={theme}
+        setTheme={setTheme}
+        currentTheme={currentTheme}
+        setCurrentTheme={setCurrentTheme}
+        />
         
 
-          </div>
         <div className="flex flex-col gap-4">
         <Card
-          className="w-[34rem]" x-chunk="charts-01-chunk-4"
+          className="w-[29rem]" x-chunk="charts-01-chunk-4"
         >
-          <CardHeader style={{marginBottom : "0px" , paddingBottom : "0px"}}>
-             <CardTitle>
+          <CardHeader className="pt-3" style={{marginBottom : "0px" , paddingBottom : "0px"}}>
+             <CardTitle className="text-xl">
               <div className="flex flex-row">
                 {/* <ArrowUp/> */}
               Phising Test
               </div>
               </CardTitle>
-             <CardDescription>January - June 2024</CardDescription>
+             <CardDescription className="text-[0.8rem]">January - June 2024</CardDescription>
           </CardHeader>
           <CardContent className="flex gap-4 p-4 pb-2">
             <ChartContainer
@@ -617,13 +637,13 @@ export default function StaticDashboard(props) {
               </BarChart>
             </ChartContainer>
           </CardContent>
-          <CardFooter className="flex flex-row border-t p-4">
+          <CardFooter className="flex flex-row border-t p-4 h-[3.6rem]">
             <div className="flex w-full items-center gap-2">
               <div className="grid flex-1 auto-rows-min gap-0.5">
                 <div className="text-xs text-muted-foreground">Positive</div>
-                <div className="flex items-baseline gap-1 text-2xl text-[#84BD00] font-bold tabular-nums leading-none">
+                <div style={{color: theme.phising_test[currentTheme][1]}}className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
                   30
-                  <span className="text-sm font-normal text-[#84BD00] text-muted-foreground">
+                  <span style={{color: theme.phising_test[currentTheme][1]}} className="text-sm font-normal text-muted-foreground">
                     %
                   </span>
                 </div>
@@ -631,9 +651,9 @@ export default function StaticDashboard(props) {
               <Separator orientation="vertical" className="mx-2 h-10 w-px" />
               <div className="grid flex-1 auto-rows-min gap-0.5">
                 <div className="text-xs text-muted-foreground">Neutral</div>
-                <div className="flex items-baseline gap-1 text-[#F0B323] text-2xl font-bold tabular-nums leading-none">
+                <div style={{color: theme.phising_test[currentTheme][2]}} className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
                   40
-                  <span className="text-sm font-normal text-[#F0B323] text-muted-foreground">
+                  <span style={{color: theme.phising_test[currentTheme][2]}} className="text-sm font-normal text-muted-foreground">
                     %
                   </span>
                 </div>
@@ -641,9 +661,9 @@ export default function StaticDashboard(props) {
               <Separator orientation="vertical" className="mx-2 h-10 w-px" />
               <div className="grid flex-1 auto-rows-min gap-0.5">
                 <div className="text-xs text-muted-foreground">Negative</div>
-                <div className="flex items-baseline gap-1 text-[#C62F10] text-2xl font-bold tabular-nums leading-none">
+                <div style={{color: theme.phising_test[currentTheme][0]}} className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
                   30
-                  <span className="text-sm font-normal text-[#C62F10] text-muted-foreground">
+                  <span style={{color: theme.phising_test[currentTheme][0]}} className="text-sm font-normal text-muted-foreground">
                     %
                   </span>
                 </div>
@@ -651,13 +671,36 @@ export default function StaticDashboard(props) {
             </div>
           </CardFooter>
         </Card>
-        <div className="flex flex-row gap-4">
+        {/* <div className="flex flex-row gap-4">
+        
+         <div className="flex flex-col">
+         
+         </div>
+                
+        </div> */}
+        
+        </div>
+        {/* <div className="flex flex-col gap-4">
+        
+        </div> */}
+        
+        </div>
+
+        {/* Fifth Row  */}
+        <div className="flex flex-row gap-3 mt-3 justify-center">
+        <PieChartStatic
+         theme={theme}
+         setTheme={setTheme}
+         currentTheme={currentTheme}
+         setCurrentTheme={setCurrentTheme}
+         />
+        
         <Card
           className="w-[17rem]" x-chunk="charts-01-chunk-0"
         >
-          <CardHeader className="space-y-0 pb-2">
-            <CardTitle>Top Performers Retention</CardTitle>
-            <CardTitle className="text-2xl pt-1 text-[#16a34a] tabular-nums">
+          <CardHeader className="space-y-0 pt-3">
+            <CardTitle className="text-xl">Top Performers Retention</CardTitle>
+            <CardTitle style={{color: theme.phising_test[currentTheme][1]}}className="text-2xl pt-1 tabular-nums">
               98.7%{" "}
               <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
                 
@@ -738,40 +781,26 @@ export default function StaticDashboard(props) {
             </ChartContainer>
           </CardContent>
           <CardFooter className="flex-col items-start gap-1">
-          <div className="flex items-center gap-2 font-medium leading-none">
+          <div className="flex items-center gap-2 text-sm font-medium leading-none">
           Retention is increased by 13.7% <TrendingUp className="h-4 w-4" />
         </div>
-            <CardDescription>
+            <CardDescription className="text-xs">
               Seperated Employees{" "}
-              <span className="font-medium text-foreground">13</span>    
+              <span className="font-medium text-sm text-foreground">13</span>    
               {" "} out of {" "}
-              <span className="font-medium text-foreground">2,412</span> 
+              <span className="font-medium text-sm text-foreground">2,412</span> 
             </CardDescription>
             
           </CardFooter>
         </Card>
-         <div className="flex flex-col">
-         <StackedBarChartStatic
+        <div className="flex flex-col">
+        <StackedBarChartStatic
         theme={theme}
         setTheme={setTheme}
         currentTheme={currentTheme}
         setCurrentTheme={setCurrentTheme}
         />
-         </div>
-                
         </div>
-        
-        </div>
-        {/* <div className="flex flex-col gap-4">
-        
-        </div> */}
-        
-        </div>
-
-        {/* Fifth Row  */}
-        <div className="flex flex-row gap-4 mt-4 justify-center">
-        
-          
         
         </div>
     

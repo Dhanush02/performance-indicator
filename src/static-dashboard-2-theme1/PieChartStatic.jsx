@@ -66,15 +66,15 @@ export default function PieChartStatic(props) {
             },
           }
   return (
-    <Card className="flex flex-col">
-      <CardHeader className=" pb-0">
-        <CardTitle>Patents Granted</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+    <Card className="flex flex-col w-[250px]">
+      <CardHeader className="pt-3 pb-0">
+        <CardTitle className="text-xl">Patents Granted</CardTitle>
+        <CardDescription className="text-[0.8rem]">January - June 2024</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 pt-0 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
+          className="mx-auto aspect-square pb-0 [&_.recharts-pie-label-text]:fill-foreground"
         >
           <PieChart >
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
@@ -84,6 +84,7 @@ export default function PieChartStatic(props) {
                 dataKey="id"
                 content={<MultilineLabel/>}
               />
+              
             <Label
                 content={({ viewBox }) => {
                   if (true) {
@@ -97,14 +98,14 @@ export default function PieChartStatic(props) {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-2xl font-bold"
+                          className="fill-foreground text-base font-bold"
                         >
                           {desktopData.map(e=>e.desktop).reduce((a,b)=>(a+b))}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground" 
+                          y={(viewBox.cy || 0) + 15}
+                          className="fill-muted-foreground text-[0.8rem]" 
                         >
                           Patents
                         </tspan>
@@ -117,13 +118,16 @@ export default function PieChartStatic(props) {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          Total Patents: 1125
+      <CardFooter className="flex-col gap-2 text-xs">
+        {/* <div className="flex items-left gap-2 text-sm font-medium leading-none">
+          Split of total patents received
+        </div> */}
+        <div className="text-sm font-medium">
+        Split of total patents received  
         </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total patents received this year
-        </div>
+        {/* <div className="leading-none items-left text-sm text-left text-muted-foreground">
+        Split of total patents received
+        </div> */}
       </CardFooter>
     </Card>
   )

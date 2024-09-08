@@ -32,16 +32,16 @@ export default function RadialText(props) {
         },
         safari: {
           label: "Safari",
-          color: "#C62F10",
+          color: theme.phising_test[currentTheme][0]
         },
       }
   return (
-    <Card className="flex flex-col w-[19.2rem] h-[15rem]">
-      <CardHeader className=" pb-0">
-        <CardTitle>Operational Excellence</CardTitle>
-        <CardDescription>Measured Index</CardDescription>
+    <Card className="flex flex-col w-[16rem] h-[14rem]">
+      <CardHeader className="pt-3 pb-0">
+        <CardTitle className="text-xl">Operational Excellence</CardTitle>
+        <CardDescription className="text-[0.8rem]">Measured Index</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 pb-3">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-[10rem]"
