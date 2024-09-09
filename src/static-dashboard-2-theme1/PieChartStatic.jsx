@@ -66,7 +66,7 @@ export default function PieChartStatic(props) {
             },
           }
   return (
-    <Card className="flex flex-col w-[250px]">
+    <Card className="flex flex-col w-full">
       <CardHeader className="pt-3 pb-0">
         <CardTitle className="text-xl">Patents Granted</CardTitle>
         <CardDescription className="text-[0.8rem]">January - June 2024</CardDescription>
@@ -74,7 +74,7 @@ export default function PieChartStatic(props) {
       <CardContent className="flex-1 pt-0 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square pb-0 [&_.recharts-pie-label-text]:fill-foreground"
+          className="mx-auto aspect-square pb-0 [&_.recharts-pie-label-text]:fill-foreground h-[15rem] w-full"
         >
           <PieChart >
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />

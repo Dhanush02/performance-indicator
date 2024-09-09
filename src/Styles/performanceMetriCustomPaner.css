@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.performance-card,
+.finance-cards,
+.operation-cards,
+.risk-cards,
+.hr-cards {
+    background-color: #fff;
+    border-radius: 16px !important;
+    font-family: "Poppins", system-ui;
+    box-shadow: 20px 16px 40px -14px rgba(0, 0, 0, 0.16);
+}
+
+.breadcrumbs>ul>li {
+    font-family: "Poppins", system-ui;
+}
+
+.controllable-cost-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.controllable-cost-text1 {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.process-desc {
+    font-size: 11px;
+    color: #979797;
+}
+
+.control-this-quater {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.control-this {
+    color: #979797;
+    font-size: 12px;
+}
+
+.control-curr-percent {
+    height: 42px;
+    width: 42px;
+    background-color: rgba(255, 0, 0, 0.646);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.percent-this-quater {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.control-cards {
+    border-left: 5px solid black;
+    border-radius: 3px !important;
+}
+
+.control-sucess-item {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-color: rgba(111, 255, 0, 0.235);
+}
+
+.control-danger-item {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 51, 0, 0.235);
+}

@@ -1,0 +1,11 @@
+.gauge {
+    width: 120px;
+    height: 120px;
+}
+
+.gauge circle:nth-child(2) {
+    stroke-linecap: round;
+    transition: stroke-dasharray 1.75s cubic-bezier(0.770, 0.000, 0.175, 1.000), stroke-opacity .75s;
+    stroke-dasharray: 0 9999;
+    stroke-opacity: 0;
+}

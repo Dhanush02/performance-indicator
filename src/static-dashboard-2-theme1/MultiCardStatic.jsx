@@ -16,7 +16,7 @@ import EcologyIcon from "@/icons/EcologyIcon";
 const MultiCardStatic = (props) => {
     const {theme, setTheme, currentTheme, setCurrentTheme} = props;
     return(
-        <Card className="w-[19.9rem] h-[18.1rem]">
+        <Card className="w-full h-full">
             <CardHeader className="pt-3 pb-0">
                 <CardTitle className="text-xl">
                     Environment, Health and Safety

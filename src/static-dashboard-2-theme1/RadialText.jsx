@@ -36,7 +36,7 @@ export default function RadialText(props) {
         },
       }
   return (
-    <Card className="flex flex-col w-[16rem] h-[14rem]">
+    <Card className="flex flex-col w-full">
       <CardHeader className="pt-3 pb-0">
         <CardTitle className="text-xl">Operational Excellence</CardTitle>
         <CardDescription className="text-[0.8rem]">Measured Index</CardDescription>

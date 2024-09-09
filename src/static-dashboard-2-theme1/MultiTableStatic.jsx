@@ -22,7 +22,7 @@ import { BadgeDollarSign, CalendarClock, CalendarDays, ShieldCheck, TrendingDown
 const MultiTableStatic = (props) =>{
     const {theme, setTheme, currentTheme, setCurrentTheme} = props;
     return(
-        <Card className="w-[33rem]">
+        <Card className="w-full h-full">
             <CardHeader className="pt-3 pb-0">
                 <CardTitle className="text-xl">
                     Project Management & Contracting

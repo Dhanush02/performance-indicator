@@ -36,7 +36,7 @@ export function StackedBarChartStatic(props) {
         },
       }
   return (
-    <Card className="w-[16rem]">
+    <Card className="w-full">
       <CardHeader className="pt-3">
         <CardTitle className="text-xl">
           <div className="flex flex-row">
@@ -48,7 +48,7 @@ export function StackedBarChartStatic(props) {
         <CardDescription className="text-[0.8rem]">January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer className="" config={chartConfig}>
+        <ChartContainer className="h-[15rem] w-full" config={chartConfig}>
           <BarChart margin={{
                   left: 0,
                   right: 0,
